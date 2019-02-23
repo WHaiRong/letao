@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+<body>
+
+    <!-- 询问是否退出的模态框===>bootstrap中的js模态框插件 -->
+    <!-- 调整模态框大小  默认中等
+       1. modal-lg  大模态框
+       2. modal-sm  小模态框
+       外层蒙层, 内层模态框, 类加给内层
+    -->
+    <div class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p><i class='glyphicon glyphicon-info-sign'></i>您确定要退出后台管理系统吗?&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary out-btn">退出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 左侧侧边栏 -->
+    <div class="aside">
+        <!-- 顶部 -->
+        <div class="brand"><a href="user.html">黑马</a></div>
+
+        <!-- 超级管理员部分 -->
+        <div class="user">
+            <img src="./images/2.jpg" alt="">
+            <p>超级管理员</p>
+        </div>
+
+        <!-- 菜单 -->
+        <div class="menu">
+            <ul>
+                <li><a href="user.html" class='current'><i class='glyphicon glyphicon-user'></i>用户管理</a></li>
+                <li>
+                    <a href="javascript:;" class='category'><i class='glyphicon glyphicon-list'></i>分类管理</a>
+                    <!-- 二级菜单 -->
+                    <div class="child">
+                        <a href="first.html" class='child_left'>一级分类</a>
+                        <a href="second.html" class='child_right'>二级分类</a>
+                    </div>
+                </li>
+                <li><a href="product.html"><i class='glyphicon glyphicon-tags'></i>商品管理</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 右侧主体部分 -->
+    <div class="main">
+        <!-- 头部 -->
+        <div class="topbar">
+            <a href="#" class='pull-left'><i class='glyphicon glyphicon-align-justify'></i></a>
+            <a href="#" class='pull-right'><i class='glyphicon glyphicon-log-out'></i></a>
+        </div>
+
+        <!-- 右侧 : 百分百响应式布局container-fluid-->
+        <div class="container-fluid">
+            <!-- 路径导航: bootstrap中的组件-路径导航 -->
+            <ol class="breadcrumb mt_20">
+                <li><a href="#">管理系统</a></li>
+                <li>首页</li>
+            </ol>
+        </div>
+    </div>
+    
+
+    <script src="./lib/jquery/jquery.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <script src="./lib/nprogress/nprogress.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/login.js"></script>
+</body>
+</html>
