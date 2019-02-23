@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+<body class='body_bg'>
+    <!-- 登录页 登录框===>bootstrap中js面板插件,里面套上css全局样式的表单 -->
+    <div class="container">
+        <div class="lt_login col-md-6 col-md-offset-3 mt_240">
+            <div class="panel panel-default panel-primary">
+                <div class="panel-heading">
+                    <h3 class='panel-title'>后台管理系统</h3>
+                </div>
+                <div class="panel-body">
+                    <!-- bootstrap中css全局样式里的表单 -->
+                    <!-- bootstrap中遵循一个规范,每一行表单,都用一个form-group包裹 -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                          <label for="inputEmail3" class="col-sm-3 control-label">用户名</label>
+                          <div class="col-sm-9">
+                              <!-- 更改栅格系统空间分配 -->
+                            <input type="text" class="form-control" id="inputEmail3" placeholder="请输入用户名">
+                            <!-- type的email改为text,并修改栅格布局的分配 -->
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputPassword3" class="col-sm-3 control-label">密　码</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputPassword3" placeholder="请输入密码">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <!-- <div class="checkbox">  不需要的删除
+                              <label> -->
+                                <!-- <input type="checkbox"> Remember me -->
+                                <button type='reset' class='btn btn-default pull-left'>重置</button>
+                                <button type='submit' class='btn btn-primary pull-right'>登录</button>
+                              <!-- </label>
+                            </div> -->
+                          </div>
+                        </div>
+                        <!-- <div class="form-group">
+                          <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Sign in</button>
+                          </div>
+                        </div> -->
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="./lib/jquery/jquery.min.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+</body>
+</html>
