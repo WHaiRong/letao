@@ -90,6 +90,9 @@ ul{
     line-height: 40px;
     border-left:3px solid transparent;
 }
+.menu .child{
+    display: none;
+}
 .menu .child_left,
 .menu .child_right{
     padding-left: 65px;
@@ -104,7 +107,7 @@ ul{
 
 /* 主体 */
 .main{
-    height: 2000px;
+    height: 1000px;
     padding-top: 50px;
     padding-left: 180px;
     transition:all 1s;

@@ -26,58 +26,60 @@
 //单独使用进度条没有意义,要结合ajax请求数据的进度,使进度条动态变化 
 //结合ajax全局事件
 
-// $(document).ajaxStart(function(){
-//     //第1个ajax发送前,开启进度条
-//     NProgress.start();
-// })
-
-// $(document).ajaxStop(function(){
-//     //模拟网络加载需要时间的环境,设一个延时器
-//     setTimeout(function(){
-//         //所有ajax完成时,关闭进度条
-//         NProgress.done();
-//     },1000);
-// })
-
-NProgress.start();
-
-
-//公用的功能
-    //1,左侧侧边栏
-    //2,左侧整体菜单的切换
-    //3,公共的退出功能
-
-//1>,二级菜单的隐藏与显示
-$('.menu .category').on('click',function(){
-    $('.child').stop().slideToggle();
+$(document).ajaxStart(function(){
+    //第1个ajax发送前,开启进度条
+    NProgress.start();
 })
 
-//2>,整个左侧侧边栏的切换隐藏与显示
-$('.topbar .pull-left').on('click',function(){
-    $('.aside').toggleClass('hidemenu');
-    $('.main').toggleClass('hidemenu');
-    $('.topbar').toggleClass('hidemenu');
+$(document).ajaxStop(function(){
+    //模拟网络加载需要时间的环境,设一个延时器
+    setTimeout(function(){
+        //所有ajax完成时,关闭进度条
+        NProgress.done();
+    },1000);
 })
 
-//3>,公共的退出功能---
-//  1展示模态框
-$('.pull-right').on('click',function(){
-    $('.modal').modal({'show':'true','keyboard':'true'});
-})
-//  2点击模态框的退出按钮,发送ajax请求,让服务端销毁用户的登录状态
-$('.out-btn').on('click',function(){
-    $.ajax({
-        type:'get',
-        url:'/employee/employeeLogout',
-        dataType:'json',
-        success:function(res){
-            console.log(res);
-            if(res.success == true){
-                location.href = 'login.html'
-            }
-        }
+
+//公用的功能---页面打开要先渲染页面,所以加个入口函数
+$(function(){
+
+        //1,左侧侧边栏
+        //2,左侧整体菜单的切换
+        //3,公共的退出功能
+
+    //1>,二级菜单的隐藏与显示
+    $('.menu .category').on('click',function(){
+        $('.child').stop().slideToggle();
     })
-})
+
+    //2>,整个左侧侧边栏的切换隐藏与显示
+    $('.topbar .pull-left').on('click',function(){
+        $('.aside').toggleClass('hidemenu');
+        $('.main').toggleClass('hidemenu');
+        $('.topbar').toggleClass('hidemenu');
+    })
+
+    //3>,公共的退出功能---
+    //  1展示模态框
+    $('.pull-right').on('click',function(){
+        $('.modal').modal({'show':'true','keyboard':'true'});
+    })
+    //  2点击模态框的退出按钮,发送ajax请求,让服务端销毁用户的登录状态
+    $('.out-btn').on('click',function(){
+        $.ajax({
+            type:'get',
+            url:'/employee/employeeLogout',
+            dataType:'json',
+            success:function(res){
+                console.log(res);
+                if(res.success == true){
+                    location.href = 'login.html'
+                }
+            }
+        })
+    })
+
+});
 
 
 
