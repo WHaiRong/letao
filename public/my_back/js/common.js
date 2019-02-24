@@ -48,8 +48,12 @@ $(function(){
         //3,公共的退出功能
 
     //1>,二级菜单的隐藏与显示
-    $('.menu .category').on('click',function(){
-        $('.child').stop().slideToggle();
+    // $('.menu .category').on('click',function(){
+    //     $('.child').stop().slideToggle();
+    // })  ----->X
+    $('.category').click(function(){
+        //这里只需要让.category这一个盒子切换显示与隐藏,里面的子元素不需要,所以不能使用事件委托注册事件
+        $(this).next().stop().slideToggle()
     })
 
     //2>,整个左侧侧边栏的切换隐藏与显示
