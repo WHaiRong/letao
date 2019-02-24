@@ -171,3 +171,11 @@ ul{
     text-align: center;
     vertical-align: middle;
 }
+
+
+/* 一级分类页面 */
+.table.table-bordered th,
+.table.table-bordered td{
+    text-align: center;
+    vertical-align: middle;
+}
