@@ -164,3 +164,10 @@ ul{
     color:#A94442;
 }
 
+
+/* 用户管理页面 */
+.table.table-hover th,
+.table.table-hover td{
+    text-align: center;
+    vertical-align: middle;
+}

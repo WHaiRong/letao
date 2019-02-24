@@ -65,7 +65,7 @@ $(function(){
 
     //3>,公共的退出功能---
     //  1展示模态框
-    $('.pull-right').on('click',function(){
+    $('.outmodal').on('click',function(){
         $('.modal').modal({'show':'true','keyboard':'true'});
     })
     //  2点击模态框的退出按钮,发送ajax请求,让服务端销毁用户的登录状态

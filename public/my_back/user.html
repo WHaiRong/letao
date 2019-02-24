@@ -36,6 +36,25 @@
         </div>
     </div>
 
+    <!-- 是否修改用户状态的模态框 -->
+    <div class="modal fade" tabindex="-1" id='userModal'>
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p><i class='glyphicon glyphicon-info-sign'></i>您确定要执行此操作吗?&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id='confirmBtn'>确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 左侧侧边栏 -->
     <div class="aside">
         <!-- 顶部 -->
@@ -69,7 +88,7 @@
         <!-- 头部 -->
         <div class="topbar">
             <a href="#" class='pull-left'><i class='glyphicon glyphicon-align-justify'></i></a>
-            <a href="#" class='pull-right'><i class='glyphicon glyphicon-log-out'></i></a>
+            <a href="#" class='pull-right outmodal'><i class='glyphicon glyphicon-log-out'></i></a>
         </div>
 
         <!-- 右侧 : 百分百响应式布局container-fluid-->
@@ -77,20 +96,65 @@
             <!-- 路径导航: bootstrap中的组件-路径导航 -->
             <ol class="breadcrumb mt_20">
                 <li><a href="#">管理系统</a></li>
-                <li>首页</li>
+                <li>用户管理</li>
             </ol>
-        </div>
+            <!-- 表格 -->
+            <table class='table table-bordered table-hover'> 
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>用户名</th>
+                        <th>手机号</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 坑 -->
+                </tbody>
+            </table>
 
-        
+            <!-- 分页容器 -->
+            <!-- ul内置了样式,直接让ul右浮是没有效果的==>给ul加个盒子 -->
+            <div class="pull-right">
+                <ul id='paginator'>
+                </ul>
+            </div>
+
+        </div> 
     </div>
     
+    <script type='text/html' id='tpl'>
+        {{ each rows v i }}
+            <tr>			
+                <td>{{i+1 + (page-1)*size}}</td>
+                <td>{{v.username}}</td>
+                <td>{{v.mobile}}</td>
+                <td>{{v.isDelete == 1 ? '正常' : '已禁用'}}</td>
+                <!-- 1 一般都是正面的状态; 0 负面的状态
+                     1 表示正常启用,  0 表示该用户已禁用
+                     isDelete: 1/0
+                -->
+                <td data-id='{{v.id}}'>
+                    {{if v.isDelete == 1}}
+                        <button class='btn btn-danger'>禁用</button>
+                    {{else}}
+                        <button class='btn btn-success'>启用</button>
+                    {{/if}}
+                </td>
+            </tr>
+        {{ /each }}
+    
+    </script>
 
     <script src="./lib/jquery/jquery.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/isLogin.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="./js/user.js"></script>
 </body>
 </html>

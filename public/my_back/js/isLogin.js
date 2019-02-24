@@ -6,7 +6,7 @@ $.ajax({
     url:'/employee/checkRootLogin',
     dataType:'json',
     success:function(res){
-        console.log(res);
+        // console.log(res);
         if(!res.success){
             location.href = 'login.html'
         }
