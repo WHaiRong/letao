@@ -18,7 +18,7 @@
        2. modal-sm  小模态框
        外层蒙层, 内层模态框, 类加给内层
     -->
-    <div class="modal fade" tabindex="-1">
+    <div class="modal fade" tabindex="-1" id='outModal'>
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -32,6 +32,51 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                     <button type="button" class="btn btn-primary out-btn">退出</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加二级分类的模态框 -->
+    <div class="modal fade" tabindex="-1" id='secondModal'>
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <form id='form'>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title">添加分类</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 下拉菜单==>bootstrap中组件==下拉菜单 -->
+                        <div class="form-group">
+                            <div class="dropdown">
+                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                <!-- 请选择一级分类 -->
+                                <!-- 这里原来的结构是button里直接写上文本,选择下拉菜单内容的时候,会覆盖后面的三角,所以这里添加一个span, -->
+                                <span id='dropdownText'>请选择一级分类</span>
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" id='addUl'>
+                                <li><a href="#">Action</a></li>
+                                <!-- 坑 -->
+                              </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="请输入二级分类" class='form-control'>
+                        </div>
+                        <div class="form-group">
+                            <label for="addFile" class='btn btn-default'>请选择图片</label>
+                            <input type="file" id='addFile' style='display:none'>
+                        </div>
+                        <div class="form-group">
+                            <img src="./images/none.png" style='height:100px' alt="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary ">添加</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -54,7 +99,7 @@
                 <li>
                     <a href="javascript:;" class='category'><i class='glyphicon glyphicon-list'></i>分类管理</a>
                     <!-- 二级菜单 -->
-                    <div class="child">
+                    <div class="child" style='display:block;'>
                         <a href="first.html" class='child_left'>一级分类</a>
                         <a class='current' href="second.html" class='child_right'>二级分类</a>
                     </div>
@@ -69,7 +114,7 @@
         <!-- 头部 -->
         <div class="topbar">
             <a href="#" class='pull-left'><i class='glyphicon glyphicon-align-justify'></i></a>
-            <a href="#" class='pull-right'><i class='glyphicon glyphicon-log-out'></i></a>
+            <a href="#" class='pull-right icon_logout'><i class='glyphicon glyphicon-log-out'></i></a>
         </div>
 
         <!-- 右侧 : 百分百响应式布局container-fluid-->
@@ -77,18 +122,60 @@
             <!-- 路径导航: bootstrap中的组件-路径导航 -->
             <ol class="breadcrumb mt_20">
                 <li><a href="#">管理系统</a></li>
-                <li>首页</li>
+                <li>分类管理</li>
+                <li>二级分类</li>
             </ol>
+            <button class='btn btn-default' id='confirmAdd'>添加分类</button>
+            <!-- 表格 -->
+            <table class='table table-bordered mt_20 table-hover'>
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>一级分类名称</th>
+                        <th>二级分类名称</th>
+                        <th>二级分类LOGO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 坑 -->
+                </tbody>
+            </table>
+
+            <!-- 分页容器 -->
+            <div class="pull-right">
+                <ul id='paginator'></ul>
+            </div>
         </div>
     </div>
-    
+    <!-- 表格模板 -->
+    <script type='text/html' id='secondTpl'>
+        {{each rows v i}}
+            <tr>
+                <td>{{i+1 + (page-1)*size}}</td>
+                <td>{{v.categoryName}}</td>
+                <td>{{v.brandName}}</td>
+                <td>
+                    <img src="{{v.brandLogo}}" style='height:40px'>
+                </td>
+            </tr>
+        {{/each}}
+    </script>
+
+    <!-- 添加分类里下拉菜单模板 -->
+    <script type='text/html' id='addTpl'>
+        {{each rows v i}}
+            <li><a href="#">{{v.categoryName}}</a></li>
+        {{/each}}
+    </script>
 
     <script src="./lib/jquery/jquery.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/isLogin.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="./js/second.js"></script>
 </body>
 </html>

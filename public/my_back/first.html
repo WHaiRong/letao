@@ -18,7 +18,7 @@
        2. modal-sm  小模态框
        外层蒙层, 内层模态框, 类加给内层
     -->
-    <div class="modal fade" tabindex="-1">
+    <div class="modal fade" tabindex="-1" id='outModal'>
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -40,17 +40,31 @@
     <div class="modal fade" tabindex="-1" id='firstModal'>
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                    <h4 class="modal-title">添加分类</h4>
-                </div>
-                <div class="modal-body">
-                    <p><i class='glyphicon glyphicon-info-sign'></i>您确定要执行此操作吗?&hellip;</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">添加</button>
-                </div>
+                <form  id='form'>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title">添加分类</h4>
+                    </div>
+                    
+                        <div class="modal-body">
+                            <!-- <p><i class='glyphicon glyphicon-info-sign'></i>您确定要执行此操作吗?&hellip;</p> -->
+                            <!-- 这里改成一个input框 -->
+                            <!-- 如果要通过bootstrap中的类更改样式,有一定的格式
+                                1,input要结合form表单使用,并且每一行form表单都要放到类为 form-group的盒子里;
+                                2,到这里基本结构已经好了,但是点击确定发现,没有提交表单的效果---改button还是没用
+                                因为button没有放到form里面---所以form要包裹到button
+                            -->
+                            <div class="form-group">
+                                <input type="text" name="categoryName" class="form-control addCate" placeholder="请输入一级分类">
+                            </div>
+                        </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">添加</button>
+                        <!-- 如果submit按钮没有放在form里面,不知道要提交谁,就没有提交数据的效果 -->
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -73,7 +87,7 @@
                 <li>
                     <a href="javascript:;" class='category'><i class='glyphicon glyphicon-list'></i>分类管理</a>
                     <!-- 二级菜单 -->
-                    <div class="child">
+                    <div class="child"  style='display:block;'>
                         <a class='current' href="first.html" class='child_left'>一级分类</a>
                         <a href="second.html" class='child_right'>二级分类</a>
                     </div>
@@ -88,7 +102,7 @@
         <!-- 头部 -->
         <div class="topbar">
             <a href="#" class='pull-left'><i class='glyphicon glyphicon-align-justify'></i></a>
-            <a href="#" class='pull-right'><i class='glyphicon glyphicon-log-out'></i></a>
+            <a href="#" class='pull-right icon_logout'><i class='glyphicon glyphicon-log-out'></i></a>
         </div>
 
         <!-- 右侧 : 百分百响应式布局container-fluid-->
@@ -130,7 +144,7 @@
     <script type='text/html' id='firstTpl'>
         {{each rows v i}}
             <tr>
-                <td>{{i+1}}</td>
+                <td>{{i+1+(page-1)*size}}</td>
                 <td>{{v.categoryName}}</td>
             </tr>
         {{/each}}
@@ -145,7 +159,6 @@
     <script src="./js/common.js"></script>
     <!-- common.js要在isLogin.js前面引入 -->
     <script src="./js/isLogin.js"></script>
-    <script src="./js/login.js"></script>
     <script src="./js/first.js"></script>
 </body>
 </html>

@@ -85,24 +85,23 @@ ul{
     display: block;
     height: 40px;
     color:#fff;
-    font-size: 16px;
+    /* font-size: 16px; */
     padding-left:45px;
     line-height: 40px;
     border-left:3px solid transparent;
-}
-.menu .child{
-    display: none;
-}
-.menu .child_left,
-.menu .child_right{
-    padding-left: 65px;
 }
 .menu a.current{
     border-left:3px solid #367FA9;
     background-color: #1D1F21;
 }
+.menu .child{
+    display: none;
+}
 .menu a i{
     margin-right:5px;
+}
+.menu .child a{
+    padding-left:65px;
 }
 
 /* 主体 */
