@@ -56,32 +56,31 @@
                                 <span id='dropdownText'>请选择二级分类</span>
                                 <span class="caret"></span>
                               </button>
-                              <ul class="dropdown-menu" id='addUl'>
-                                
+                              <ul class="dropdown-menu" id='addUl'> 
                                 <!-- 坑 -->
                               </ul>
                               
                               <!-- 用于提交数据的隐藏域 -->
-                              <input type="hidden" name='categoryId'>
+                              <input type="hidden" name='brandId'>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" name='brandName' placeholder="请输入商品名称" class='form-control'>
+                            <input type="text" name='proName' placeholder="请输入商品名称" class='form-control'>
                         </div>
                         <div class="form-group">
-                            <textarea name="brandName" cols="30" rows="3" class='form-control' placeholder="请输入商品描述"></textarea>
+                            <textarea name="proDesc" cols="30" rows="3" class='form-control' placeholder="请输入商品描述"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="text" name='brandName' placeholder="请输入商品库存" class='form-control'>
+                            <input type="text" name='num' placeholder="请输入商品库存" class='form-control'>
                         </div>
                         <div class="form-group">
-                            <input type="text" name='brandName' placeholder="请输入商品尺码" class='form-control'>
+                            <input type="text" name='size' placeholder="请输入商品尺码" class='form-control'>
                         </div>
                         <div class="form-group">
-                            <input type="text" name='brandName' placeholder="请输入商品原价" class='form-control'>
+                            <input type="text" name='oldPrice' placeholder="请输入商品原价" class='form-control'>
                         </div>
                         <div class="form-group">
-                            <input type="text" name='brandName' placeholder="请输入现价" class='form-control'>
+                            <input type="text" name='price' placeholder="请输入现价" class='form-control'>
                         </div>
                         <div class="form-group">
                             <label for="fileupload" class='btn btn-default'>请选择图片</label>
@@ -91,11 +90,12 @@
                                     multiple指定多文件上传
                                     <input id="fileupload" type="file" name="files" data-url="server/php/" multiple>
                             -->
-                            <input type="file" name='pic1' id='fileupload' data-url='/category/addSecondCategoryPic' style='display:none'>
+                            <input type="file" name='pic1' id='fileupload' multiple data-url='/category/addSecondCategoryPic' style='display:none'>
                         </div>
                         <div class="form-group" id='imgBox'>
-                            <img src="./images/none.png" style='height:100px' alt="">
-                            <input type="hidden" name='brandLogo'>
+                            <!-- <img src="./images/none.png" style='height:100px' alt=""> -->
+                            <input type="hidden" name='picStatus'>
+                            <!-- 隐藏域,用于标记图片是否上传满3张 -->
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -199,7 +199,9 @@
 
     <!-- 下拉菜单模板 -->
     <script type='text/html' id='dropdownTpl'>
-        <li><a href="#">Action</a></li>
+        {{each rows v i}}
+            <li><a href="#">{{v.brandName}}</a></li>
+        {{/each}}
     </script>
     
 

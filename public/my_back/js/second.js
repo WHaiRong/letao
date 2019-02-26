@@ -78,7 +78,7 @@ $(function(){
         //-->渲染数据时就自定义属性存储  当前用来选择的框,不是form表单项,需要添加一个隐藏域,用来上传数据
         //获取id
         var id = $(this).data('id');
-        //把这个id设置给隐藏域
+        //把这个id设置给隐藏域--->那么提交数据时,这个隐藏域提交的就是categoryId=这个id值,即id值即为隐藏域的value值,然后提交给后台
         $('[name="categoryId"]').val(id);
 
         //只要给隐藏域赋值了,此时校验状态应该更新成成功
@@ -99,9 +99,14 @@ $(function(){
 
           var result = data.result; //后台返回的结果
           var picUrl = result.picAddr ; //获取返回的图片路径
+
+          //
           //路径赋值给img的src,即可预览图片
           $('#imgBox img').attr('src',picUrl);
          
+            //把路径赋值给隐藏域,才能提交数据
+            $("[name='brandLogo']").val(picUrl)
+
            //只要隐藏域有值了,就是更新成成功状态
            $('#form').data('bootstrapValidator').updateStatus('brandLogo','VALID')
         }
@@ -189,6 +194,9 @@ $(function(){
 
 
 //六,注册表单校验成功事件,并阻止默认的提交,通过ajax提交数据
+//分析: 点击添加按钮,提交数据--地址上只有brandName=xxx , 而没有一级分类和图片数据--给他们添加隐藏域
+//      专门用于提交数据,用户也看不到
+
     $('#form').on('success.form.bv',function(e){
         e.preventDefault();
 
