@@ -6,6 +6,15 @@
 .body_bg{
     background-color: #222D32;
 }
+a:link,
+a:visited,
+a:hover,
+a:active{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
 
 /* 可复用的类名 */
 .mt_240{
@@ -21,3 +30,60 @@
 }
 
 /* 首页 */
+.aside{
+    width:180px;
+    height:100%;
+    background-color: #222D32;
+    position: fixed;
+    /* 加了定位之后高度就会显示出来 */
+    left:0;
+    top:0
+}
+.aside .title{
+    width: 100%;
+    height: 45px;
+    background-color: #367FA9;
+    font-size: 24px;
+    color:#fff;
+    text-align: center;
+    line-height: 45px;
+}
+.aside .user{
+    height: 180px;
+    width: 100%;
+    padding-top:30px;
+}
+.aside .user img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+    margin:0 auto;
+}
+.aside .user p{
+    height: 40px;
+    color:#fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 40px;
+}
+.aside .nav a{
+    display: block;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    color:#fff;
+    border-left:3px solid transparent;
+}
+.aside .nav a.current{
+    border-left:3px solid #367FA9;
+    background-color: #1D1F21;
+
+}
+.aside .nav i{
+    margin-right:5px;
+}
+.aside .nav .child a{
+    padding-left:20px;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+<body>
+    <!-- 用流式布局做移动端  乐淘项目移动端:这里使用mui框架 -->
+    <!-- 
+        rem布局 : 宽高都是自适应,适用于纯自定制页面开发
+                 原理:媒体查询+rem为单位
+        流式布局 : 定高,宽自适应,当借助第3方插件/框架时(单位基本是px,如果用rem布局,改单位太烦琐),适用流式布局
+                 原理:
+        响应式布局 : 一套代码兼容多个终端(pc,手机),百分比
+                 原理:动态检测屏幕宽度,设置盒子子元素的宽度或控制元素显示隐藏实现布局
+    
+    -->
+    <div class="lt_container">
+        <div class="lt_head"></div>
+        <div class="lt_main"></div>
+        <div class="lt_foot"></div>
+
+    </div>
+
+
+    <script src="./lib/mui/js/mui.js"></script>
+</body>
+</html>
