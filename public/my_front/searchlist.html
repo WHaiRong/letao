@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/searchlist.css">
+</head>
+<body>
+    <!-- 用流式布局做移动端  乐淘项目移动端:这里使用mui框架 -->
+    <!-- 
+        rem布局 : 宽高都是自适应,适用于纯自定制页面开发
+                 原理:媒体查询+rem为单位
+        流式布局 : 定高,宽自适应,当借助第3方插件/框架时(单位基本是px,如果用rem布局,改单位太烦琐),适用流式布局
+                 原理:
+        响应式布局 : 一套代码兼容多个终端(pc,手机),百分比
+                 原理:动态检测屏幕宽度,设置盒子子元素的宽度或控制元素显示隐藏实现布局
+    
+    -->
+    <div class="lt_container">
+        <!-- 头部 -->
+        <div class="lt_head">
+            <a href="javascript:history.back()" class='fa_left '><i class='mui-icon mui-icon-back'></i></a>
+            <h3>搜索中心</h3>
+            <a href="search.html" class='fa_right '><i class='fa fa-search'></i></a>
+        </div>
+
+        <!-- 主体 -->
+        <div class="lt_main">
+
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <!-- 搜索框 -->
+                    <div class="search">
+                        <input class="search_input" type="text" placeholder="请输入搜索关键字">
+                        <button class='search_btn mui-btn mui-btn-primary'>搜索</button>
+                    </div>
+                    <!-- 排序 -->
+                    <div class="sort">
+                        <a href="#">上架时间<i class='fa fa-angle-down'></i></a>
+                        <a data-type='price' href="#">价格<i class='fa fa-angle-down'></i></a>
+                        <a data-type='num' href="#">库存<i class='fa fa-angle-down'></i></a>
+                        <a href="#">折扣<i class='fa fa-angle-down'></i></a>
+                    </div>
+                    <!-- 商品 -->
+                    <div class="content">
+                        <ul class='mui-clearfix'>
+                            <!-- 坑 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部 -->
+        <div class="lt_foot">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <i class='fa fa-home'></i>
+                        <p>首页</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <i class='fa fa-bars'></i>
+                        <p>分类</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html">
+                        <i class='fa fa-shopping-cart'></i>
+                        <p>购物车</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="user.html">
+                        <i class='fa fa-user'></i>
+                        <p>个人中心</p>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- 模板 -->
+    <script type='text/html' id='searchlistTpl'>
+        {{each data v i}}
+            <li>
+                <a href="./detail.html?productId={{v.id}}">
+                    <img src="{{v.pic[0].picAddr}}" alt="">
+                    <p class='mui-ellipsis-2'>{{v.proName}}</p>
+                    <p><span class='price'>&yen;{{v.price}}</span><span class='oldPrice'>&yen;{{v.oldPrice}}</span></p>
+                    <button class='mui-btn mui-btn-danger'>立即购买</button>
+                </a>
+            </li>
+        {{/each}}
+    </script>
+    
+    
+
+    <script src="./lib/mui/js/mui.js"></script>
+    <script src="./lib/zepto/zepto.min.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./js/conmmon.js"></script>
+    <script src="./js/searchlist.js"></script>
+</body>
+</html>

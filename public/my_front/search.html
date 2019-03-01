@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/search.css">
+</head>
+<body>
+    <!-- 用流式布局做移动端  乐淘项目移动端:这里使用mui框架 -->
+    <!-- 
+        rem布局 : 宽高都是自适应,适用于纯自定制页面开发
+                 原理:媒体查询+rem为单位
+        流式布局 : 定高,宽自适应,当借助第3方插件/框架时(单位基本是px,如果用rem布局,改单位太烦琐),适用流式布局
+                 原理:
+        响应式布局 : 一套代码兼容多个终端(pc,手机),百分比
+                 原理:动态检测屏幕宽度,设置盒子子元素的宽度或控制元素显示隐藏实现布局
+    
+    -->
+    <div class="lt_container">
+        <!-- 头部 -->
+        <div class="lt_head">
+            <a href="javascript:history.back()" class='fa_left '><i class='mui-icon mui-icon-back'></i></a>
+            <h3>搜索中心</h3>
+            <a href="search.html" class='fa_right '><i class='fa fa-search'></i></a>
+        </div>
+
+        <!-- 主体 -->
+        <div class="lt_main">
+
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+
+                    <div class="search">
+                        <input class="search_input" type="text" placeholder="请输入搜索关键字">
+                        <button class='search_btn mui-btn mui-btn-primary'>搜索</button>
+                    </div>
+
+                    <div class="history">
+                        <!-- 挖个巨坑 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部 -->
+        <div class="lt_foot">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <i class='fa fa-home'></i>
+                        <p>首页</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <i class='fa fa-bars'></i>
+                        <p>分类</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html">
+                        <i class='fa fa-shopping-cart'></i>
+                        <p>购物车</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="user.html">
+                        <i class='fa fa-user'></i>
+                        <p>个人中心</p>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- 没有历史数据时,搜索框下面整个结构都隐藏,所以模板需要用搜索框下面整个盒子;通过数据来判断结构 -->
+    <script type='text/html' id='searchTpl'>
+        {{if arr.length == 0}}
+            <p>没有更多历史记录了</p>
+        {{else}}
+            <div class="title">
+                <span class='mui-pull-left'>搜索历史</span>
+                <span class='clearBtn mui-pull-right'><i class='fa fa-trash'></i>清空记录</span>
+            </div>
+            <div class="record">
+                <ul>
+                    {{each arr v i}}
+                        <li><a href="#">{{v}}</a><i  data-index='{{i}}' class='btn_delete mui-pull-right mui-icon mui-icon-closeempty'></i></li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+    </script>
+    
+
+    <script src="./lib/mui/js/mui.js"></script>
+    <script src="./lib/zepto/zepto.min.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./js/conmmon.js"></script>
+    <script src="./js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+
+.lt_container .lt_head h3{
+    font-size: 20px;
+    font-weight: 1;
+}
+
+
+.lt_main .title{
+    height: 30px;
+}
+.lt_main .title span{
+    font-size: 12px;
+    color:#333;
+}
+.lt_main .history .record{
+    border: 1px dashed #ccc;
+}
+.lt_main .history{
+    padding:0 10px;
+
+}
+.lt_main .history .record li{
+    height: 30px;
+    line-height: 30px;
+    border-bottom:1px dashed #ccc;
+}
+.lt_main .history .record li i{
+    line-height: 30px;
+}
+.lt_main .history .record li:last-child{
+    border-bottom:none;
+}
+.lt_main .history .record li a{
+    font-size: 12px;
+    /* color:#333; */
+    padding-left:10px;
+}
