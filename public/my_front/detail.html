@@ -87,25 +87,24 @@
         </div>
 
         <!-- 产品尺码 
-            模板引擎渲染尺码:用template原生语法
+            模板引擎渲染尺码:用template原生语法,js代码用<% %>包裹
             
         -->
         <div class="lt_size item_box">
           尺码:
-          <span>40</span>
-          <span class="current">40</span>
-          <span>40</span>
-          <span>40</span>
-          <span>40</span>
-          <span>40</span>
-          <span>40</span>
-          <span>40</span>
-          <span>40</span>
-          <span>40</span>
-          <span>40</span>
-          <span>40</span>
-          <span>40</span>
-          <span>40</span>
+          <%  
+            //有个变量,size:"34-66"
+            var arr = size.split('-'); //[34,66]
+            var start = arr[0]; //34
+            var end = arr[1]; //66
+            for(var i = start;i <= end;i++){
+          %>
+              <span>{{ i }}</span>
+          <%
+            }
+          %>
+          <!-- <span class="current">40</span> -->
+          
         </div>
 
 

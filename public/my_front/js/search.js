@@ -154,6 +154,9 @@ $(function(){
 
 
     //点击历史记录,搜索商品
-    
+    $('.history').on('click','.record li',function(){
+        console.log(11)
+        
+    })
 
 });
