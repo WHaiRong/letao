@@ -48,10 +48,8 @@
                     </div>
                     <!-- 商品 -->
                     <div class="content">
-                        <ul class='mui-clearfix'>
-                            <!-- 坑 -->
-                            
-                        </ul>
+                        <!-- 坑 -->
+                        <div class="loading"></div>
                     </div>
                 </div>
             </div>
@@ -92,16 +90,18 @@
 
     <!-- 模板 -->
     <script type='text/html' id='searchlistTpl'>
-        {{each data v i}}
-            <li>
-                <a href="./detail.html?productId={{v.id}}">
-                    <img src="{{v.pic[0].picAddr}}" alt="">
-                    <p class='mui-ellipsis-2'>{{v.proName}}</p>
-                    <p><span class='price'>&yen;{{v.price}}</span><span class='oldPrice'>&yen;{{v.oldPrice}}</span></p>
-                    <button class='mui-btn mui-btn-danger'>立即购买</button>
-                </a>
-            </li>
-        {{/each}}
+        <ul class='mui-clearfix'>
+            {{each data v i}}
+                <li>
+                    <a href="./detail.html?productId={{v.id}}">
+                        <img src="{{v.pic[0].picAddr}}" alt="">
+                        <p class='mui-ellipsis-2'>{{v.proName}}</p>
+                        <p><span class='price'>&yen;{{v.price}}</span><span class='oldPrice'>&yen;{{v.oldPrice}}</span></p>
+                        <button class='mui-btn mui-btn-danger'>立即购买</button>
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
     </script>
     
     

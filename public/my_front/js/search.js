@@ -155,8 +155,23 @@ $(function(){
 
     //点击历史记录,搜索商品
     $('.history').on('click','.record li',function(){
-        console.log(11)
-        
+        var value = $(this).find('a').text();
+        console.log(value)
+
+        var arr = getData()
+
+        //数组去重
+        if(arr.indexOf(value) != -1){  //如果返回不是-1,说明value在数组中已经存在,返回的对应的下标;那么就删除这一项,重新添加到最前面
+            arr.splice(arr.indexOf(value),1)
+
+        }
+
+        arr.unshift(value)
+
+        localStorage.setItem('search_list',JSON.stringify(arr))
+        render()
+
+        location.href = 'searchlist.html?value='+value
     })
 
 });

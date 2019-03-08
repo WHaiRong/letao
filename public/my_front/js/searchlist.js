@@ -34,6 +34,7 @@ $(function(){
                                              //获取结果是个伪数组,即如果a上有current类,$current有长度
                                              //如果没有current类,$current没有长度
         console.log($current);
+
         if($current.length == 1){
             //如果有高亮的a,需要排序
             // var price = $current.find('i').hasClass('fa-angle-up') ? 1 : 2
@@ -54,31 +55,37 @@ $(function(){
 
         console.log(paramsObj)
 
-        //3,根据搜索关键字,发送请求获取数据,动态渲染商品列表
-        $.ajax({
-            type:'get',
-            url:'/product/queryProduct',
-            dataType:'json',
-            // data:{
+        //6,(2)
+        setTimeout(function(){
 
-            //     //后台要求的必传参数有3个
-            //     proName:$('.search_input').val(), //商品名字
-            //     page:1, //第几面
-            //     pageSize: 100 //每页几条
 
-            //     //如果需要排序,需要传排序的参数:
-            //     //5,(4)判断是否需要排序? 就看有没有高亮的a
+            //3,根据搜索关键字,发送请求获取数据,动态渲染商品列表
+            $.ajax({
+                type:'get',
+                url:'/product/queryProduct',
+                dataType:'json',
+                // data:{
+    
+                //     //后台要求的必传参数有3个
+                //     proName:$('.search_input').val(), //商品名字
+                //     page:1, //第几面
+                //     pageSize: 100 //每页几条
+    
+                //     //如果需要排序,需要传排序的参数:
+                //     //5,(4)判断是否需要排序? 就看有没有高亮的a
+    
+                //     // price:  //使用价格排序（1升序，2降序）
+                //     // num: //产品库存排序（1升序，2降序）
+                // },
+                data:paramsObj,
+                success:function( info ){
+                    console.log(info)
+                    var htmlstr = template('searchlistTpl',info)
+                    $('.content').html(htmlstr);
+                }
+            })
 
-            //     // price:  //使用价格排序（1升序，2降序）
-            //     // num: //产品库存排序（1升序，2降序）
-            // },
-            data:paramsObj,
-            success:function( info ){
-                console.log(info)
-                var htmlstr = template('searchlistTpl',info)
-                $('.content ul').html(htmlstr);
-            }
-        })
+        },1000)
     }
 
     //4,点击当前页面的搜索按钮,发送请求,渲染数据
@@ -87,7 +94,7 @@ $(function(){
     })
 
 
-    //5,排序
+    //5,排序功能及高亮效果
     //分析:
     //  (1),如果本身没有current类,添加上current,排他,实现高亮
     //  (2),如果本身有current类,切换箭头的方向,-->切换箭头类名fa-angle-up  fa-angle-down,实现排序
@@ -107,6 +114,13 @@ $(function(){
     })
 
 
+    //6,添加加载中的动画效果
+    //(1),在结构中放一个盒子做加载效果的模具,用css添加动画效果,让页面延迟加载,就能
+    //    看到正在加载的动画效果
+
+    //加个延时器,模拟网络加载延迟的效果,在延时器里发送ajax请求,渲染数据
+    //所以把延时器放到render里,包裹ajax的地方 
+    
 });
 
 
